@@ -21,9 +21,7 @@ Artekium/
 ├── 📁 tests/
 │   ├── 📁 data/
 │   │   └── negative_validation_cases.json  # Casos de prueba negativos
-│   ├── 📁 test_suites/            # Organización futura de tests
 │   └── test_import.py             # Tests principales
-├── 📁 reports/                    # Reportes de ejecución
 ├── conftest.py                    # Configuración de Pytest y fixtures
 ├── requirements.txt               # Dependencias del proyecto
 ├── .env                          # Variables de entorno
