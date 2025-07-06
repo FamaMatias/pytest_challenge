@@ -42,7 +42,7 @@ Artekium/
 
 ```bash
 # Clonar el proyecto
-git clone [pytest_challenge](https://github.com/FamaMatias/pytest_challenge)
+git clone https://github.com/FamaMatias/pytest_challenge
 
 # Crear entorno virtual (recomendado)
 python -m venv .venv
