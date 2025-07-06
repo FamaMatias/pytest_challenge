@@ -1,0 +1,13 @@
+[
+  { "argumento": 99999999999, "expected_status": 404 },
+  { "argumento": "", "expected_status": 400 },
+  { "argumento": null, "expected_status": 400 },
+  { "argumento": -1, "expected_status": 400 },
+  { "argumento": 0, "expected_status": 400 },
+  { "argumento": "123abc", "expected_status": 422 },
+  { "argumento": "   ", "expected_status": 400 },
+  { "argumento": "123.45", "expected_status": 422 },
+  { "argumento": "undefined", "expected_status": 422 },
+  { "argumento": "true", "expected_status": 422 },
+  { "argumento": "false", "expected_status": 422 }
+] 
