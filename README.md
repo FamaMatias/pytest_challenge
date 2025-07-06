@@ -1,4 +1,4 @@
-# 🚀 Proyecto de Automatización de API - Artekium
+# 🚀 Proyecto de Automatización de API
 
 ## 📋 Descripción
 
@@ -26,7 +26,7 @@ Artekium/
 ├── 📁 reports/                    # Reportes de ejecución
 ├── conftest.py                    # Configuración de Pytest y fixtures
 ├── requirements.txt               # Dependencias del proyecto
-├── .env                          # Variables de entorno (crear)
+├── .env                          # Variables de entorno
 └── README.md                     # Este archivo
 ```
 
@@ -42,8 +42,7 @@ Artekium/
 
 ```bash
 # Clonar el proyecto
-git clone <url-del-repositorio>
-cd Artekium
+git clone [<url-del-repositorio>](https://github.com/FamaMatias/pytest_challenge)
 
 # Crear entorno virtual (recomendado)
 python -m venv .venv
@@ -103,9 +102,7 @@ pytest test_import.py
 - **Función**: `load_cases()` para cargar casos de prueba
 - **Cobertura**: Validaciones de casos negativos (sad paths)
 
-## 🔧 Componentes Principales
-
-### **📁 config/env_config.py**
+## **📁 config/env_config.py**
 ```python
 # Configuración de ambientes disponibles
 configs = {
@@ -119,24 +116,6 @@ configs = {
     }
 }
 ```
-
-### **📁 pages/import_api.py**
-Clase principal que implementa el **Page Object Model**:
-- **`__init__(env)`**: Inicializa con configuración del ambiente
-- **`get_token()`**: Autenticación automática
-- **`post_import(person_id)`**: Envío de datos a la API
-
-### **📁 utils/db_utils.py**
-Utilidades para conexión a base de datos:
-- **`get_connection()`**: Conexión MySQL con variables de entorno
-- **`execute_sql_file()`**: Ejecución de consultas SQL parametrizadas
-- **`close_connection()`**: Cierre seguro de conexiones
-
-### **📁 conftest.py**
-Configuración de Pytest y fixtures:
-- **`api_client`**: Instancia de ImportApi para tests
-- **`db_connection`**: Conexión a BD con cleanup automático
-- **`auth_token`**: Token de autenticación reutilizable
 
 ## 🎯 Casos de Prueba
 
@@ -155,28 +134,6 @@ Los tests de casos negativos validan el comportamiento cuando se envían datos i
 2. **Validación de errores**: Se verifica que la API responda con el código de error esperado
 3. **Reporte de resultados**: Se muestran los detalles del error para análisis
 
-### **Parametrización con load_cases()**
-La función `load_cases()` permite cargar múltiples casos de prueba desde un archivo JSON:
-
-- **Carga automática**: Lee todos los casos de prueba del archivo JSON
-- **Flexibilidad**: Permite agregar nuevos casos sin modificar el código del test
-- **Reutilización**: Se puede usar para diferentes tipos de validaciones
-- **Organización**: Separa los datos de prueba de la lógica del test
-
-**Ejemplos de casos de prueba:**
-- PersonId muy grande → Error 404
-- PersonId vacío → Error 400  
-- PersonId con letras → Error 422
-
-## 📈 Reportes y Resultados
-
-### **Salida de Consola**
-```
-test_happy_path Passed
-Status Code: 200
-Response Body: {"status": "success", "message": "Data imported"}
-DB Result: [{'personId': 111, 'name': 'John Doe', ...}]
-```
 
 
 ## 🛠️ Dependencias
@@ -187,23 +144,6 @@ requests                  # Cliente HTTP para APIs
 mysql-connector-python    # Driver MySQL
 python-dotenv            # Variables de entorno
 ```
-
-## 🎨 Patrones de Diseño
-
-### **Page Object Model (POM)**
-- **`ImportApi`**: Encapsula interacciones con la API
-- **Separación**: Lógica de negocio vs tests
-- **Reutilización**: Métodos compartidos entre tests
-
-### **Fixtures de Pytest**
-- **Setup/Teardown**: Automático con `yield`
-- **Scope**: `session` para configuración global
-- **Inyección**: Dependencias automáticas en tests
-
-### **Parametrización**
-- **Datos externos**: JSON para casos de prueba
-- **Flexibilidad**: Fácil agregar nuevos casos
-- **Mantenimiento**: Separación de datos y lógica
 
 
 
